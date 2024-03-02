@@ -29,13 +29,8 @@ jobs:
           echo $TELEGRAM_BOT_TOKEN    
         # ^ 
         # Reference by environment variable for added security
-              
-  
-      - name: Upload to Deno Deploy       
-        env:
-           TELEGRAM_BOT_TOKEN: ${{ vars.TELEGRAM_BOT_TOKEN }}
-        uses: denoland/deployctl@v1
-        with:
-          project: "quiet-parrot-65"
-          entrypoint: "task.ts" # 📝 Update the entrypoint if necessary
-          root: "." # 📝 Update the root if necessary
+
+      - name: Run Project
+        run: |
+          ${{ vars.TELEGRAM_BOT_TOKEN }} deno task start
+      
