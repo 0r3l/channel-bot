@@ -32,5 +32,5 @@ jobs:
 
       - name: Run Project
         run: |
-          ${{ vars.TELEGRAM_BOT_TOKEN }} deno task start
+          ${{ vars.TELEGRAM_BOT_TOKEN }} /opt/hostedtoolcache/deno/1.41.1/x64/deno task start
       
