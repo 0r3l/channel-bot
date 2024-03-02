@@ -8,7 +8,7 @@ console.debug = () => {}
 
 export async function main() {
   const { result } = await xhr<{ result: TelegramMessage[] }>('getUpdates')
-  console.debug({ result })
+  console.log({ result })
   const interceptedMessages = result
     .map((telegramMessage: TelegramMessage) => {
       const diff = difference(
