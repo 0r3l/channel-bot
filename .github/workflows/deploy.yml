@@ -9,7 +9,7 @@ jobs:
   deploy:
     name: Deploy    
     runs-on: ubuntu-latest
-    environment: production
+    environment: dev
 
     permissions:
       id-token: write # Needed for auth with Deno Deploy
@@ -24,10 +24,16 @@ jobs:
         with:
           deno-version: v1.x    
           
-      - name: Environment variables check
-        run: echo "Hello, My TELEGRAM_BOT_TOKEN is ${{env.TELEGRAM_BOT_TOKEN}}"
+      - name: SHow env var
+        run: |
+          echo $TELEGRAM_BOT_TOKEN    
+        # ^ 
+        # Reference by environment variable for added security
+              
   
       - name: Upload to Deno Deploy       
+        env:
+           TELEGRAM_BOT_TOKEN: ${{ vars.TELEGRAM_BOT_TOKEN }}
         uses: denoland/deployctl@v1
         with:
           project: "quiet-parrot-65"
