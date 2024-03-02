@@ -1,5 +1,4 @@
 name: Deploy
-run: echo "Hello, My TELEGRAM_BOT_TOKEN is ${{env.TELEGRAM_BOT_TOKEN}}"
 on:
   push:
     branches: main
@@ -8,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    name: Deploy
+    name: Deploy    
     runs-on: ubuntu-latest
 
     permissions:
@@ -22,9 +21,12 @@ jobs:
       - name: Install Deno
         uses: denoland/setup-deno@v1
         with:
-          deno-version: v1.x      
-
-      - name: Upload to Deno Deploy
+          deno-version: v1.x    
+          
+      - name: Environment variables check
+        run: echo "Hello, My TELEGRAM_BOT_TOKEN is ${{env.TELEGRAM_BOT_TOKEN}}"
+  
+      - name: Upload to Deno Deploy       
         uses: denoland/deployctl@v1
         with:
           project: "quiet-parrot-65"
