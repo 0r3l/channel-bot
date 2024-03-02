@@ -30,6 +30,6 @@ jobs:
 
       - name: Run Task
         env: 
-          TELEGRAM_BOT_TOKEN: ${{ vars.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: deno task start   
       
