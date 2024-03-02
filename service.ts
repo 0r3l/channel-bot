@@ -1,6 +1,6 @@
-export async function xhr(api: string, options?: RequestInit) {
+export async function xhr<T>(api: string, options?: RequestInit): Promise<T> {
   const token = Deno.env.get('TELEGRAM_BOT_TOKEN')
-  console.log(
+  console.debug(
     'telegram token',
     token
       ?.split('')
@@ -14,9 +14,9 @@ export async function xhr(api: string, options?: RequestInit) {
   )
   const url = `https://api.telegram.org/bot${token}/${api}`
 
-  console.log({ url }, { options })
+  console.debug({ url }, { options })
   const resp = await fetch(url, options)
   const json = await resp.text()
-  console.log(json)
+  console.debug(json)
   return JSON.parse(json)
 }
