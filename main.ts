@@ -8,7 +8,7 @@ console.debug = () => {}
 
 export async function main() {
   const { result } = await xhr<{ result: TelegramMessage[] }>('getUpdates')
-  console.log({ result })
+  console.debug({ result })
   const interceptedMessages = result
     .map((telegramMessage: TelegramMessage) => {
       const diff = difference(
@@ -45,7 +45,7 @@ export async function main() {
     })
     .filter((x: InterceptedMessage | undefined) => x)
 
-  console.log({ interceptedMessages })
+  console.debug({ interceptedMessages })
 
   for (const {
     chat_id,
