@@ -29,5 +29,7 @@ jobs:
           deno-version: ${{ matrix.deno-version }}    
 
       - name: Run Task
-        run: ${{ vars.TELEGRAM_BOT_TOKEN }} deno task start   
+        env: 
+          TELEGRAM_BOT_TOKEN: ${{ vars.TELEGRAM_BOT_TOKEN }}
+        run: deno task start   
       
